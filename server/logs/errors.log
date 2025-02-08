@@ -1,0 +1,134 @@
+2025-02-04T22:40:09.729Z - ENOENT: no such file or directory, open 'public/images/img-1738708809728.jpg'
+2025-02-04T22:40:59.676Z - ENOENT: no such file or directory, open 'public/images/img-1738708859674.jpg'
+2025-02-04T22:42:16.119Z - ENOENT: no such file or directory, open 'public/images/img-1738708936118.jpg'
+2025-02-04T22:42:39.167Z - ENOENT: no such file or directory, open 'public/images/img-1738708959165.jpg'
+2025-02-04T22:48:41.310Z - Missing required fields!
+2025-02-04T22:48:59.252Z - Missing required fields!
+2025-02-04T22:49:08.308Z - ENOENT: no such file or directory, open 'public/images/img-1738709348307.jpg'
+2025-02-05T00:47:17.650Z - ENOENT: no such file or directory, open 'public/images/img-1738716437647.png'
+2025-02-05T00:48:26.437Z - ENOENT: no such file or directory, open 'public/images/img-1738716506434.png'
+2025-02-05T00:48:48.114Z - ENOENT: no such file or directory, open 'public/images/img-1738716528113.png'
+2025-02-05T00:52:46.430Z - Missing required fields!
+2025-02-05T00:53:05.180Z - Missing required fields!
+2025-02-07T02:09:15.610Z - 
+Invalid `prisma.event.create()` invocation in
+/home/farrelihsanp/PURWADHIKA/MINI-PROJECT/server/src/controllers/event-controller.tsx:48:41
+
+  45 
+  46 fs.unlink(req.file.path);
+  47 
+→ 48 const newEvent = await prisma.event.create({
+       data: {
+         title: "TITLE 2",
+         excerpt: "EXCERPT 2",
+         content: "CONTENT 2",
+         image: "https://res.cloudinary.com/dm1cnsldc/image/upload/v1738894155/blog/images/ovxxmnvo74u6znbevgqd.png",
+         location: "Pasar Minggu",
+         publishedDate: new Date("2025-02-04T06:58:39.713Z"),
+         CategoryEvent: {
+           createMany: {
+             data: [
+               {
+                 categoryId: 5
+               }
+             ]
+           }
+         },
+     +   slug: String
+       }
+     })
+
+Argument `slug` is missing.
+2025-02-07T02:10:07.458Z - 
+Invalid `prisma.event.create()` invocation in
+/home/farrelihsanp/PURWADHIKA/MINI-PROJECT/server/src/controllers/event-controller.tsx:48:41
+
+  45 
+  46 fs.unlink(req.file.path);
+  47 
+→ 48 const newEvent = await prisma.event.create({
+       data: {
+         title: "TITLE 2",
+         excerpt: "EXCERPT 2",
+         content: "CONTENT 2",
+         image: "https://res.cloudinary.com/dm1cnsldc/image/upload/v1738894206/blog/images/ti0mhbyixfgknmb2n1nw.png",
+         location: "Pasar Minggu",
+         publishedDate: new Date("2025-02-04T06:58:39.713Z"),
+         CategoryEvent: {
+           createMany: {
+             data: [
+               {
+                 categoryId: 1
+               }
+             ]
+           }
+         },
+     +   slug: String
+       }
+     })
+
+Argument `slug` is missing.
+2025-02-07T02:11:32.601Z - 
+Invalid `prisma.event.create()` invocation in
+/home/farrelihsanp/PURWADHIKA/MINI-PROJECT/server/src/controllers/event-controller.tsx:56:41
+
+  53 
+  54 fs.unlink(req.file.path);
+  55 
+→ 56 const newEvent = await prisma.event.create(
+Foreign key constraint violated: `CategoryEvent_categoryId_fkey (index)`
+2025-02-07T02:11:52.244Z - 
+Invalid `prisma.event.create()` invocation in
+/home/farrelihsanp/PURWADHIKA/MINI-PROJECT/server/src/controllers/event-controller.tsx:56:41
+
+  53 
+  54 fs.unlink(req.file.path);
+  55 
+→ 56 const newEvent = await prisma.event.create(
+Foreign key constraint violated: `CategoryEvent_categoryId_fkey (index)`
+2025-02-08T04:45:24.573Z - events.map is not a function
+2025-02-08T06:34:41.637Z - 
+Invalid `prisma.event.findMany()` invocation in
+/home/farrelihsanp/PURWADHIKA/MINI-PROJECT/server/src/controllers/event-controller.tsx:98:38
+
+  95   Next: NextFunction
+  96 ) {
+  97   try {
+→ 98     const posts = await prisma.event.findMany(
+The table `public.event` does not exist in the current database.
+2025-02-08T06:34:41.645Z - 
+Invalid `prisma.event.findMany()` invocation in
+/home/farrelihsanp/PURWADHIKA/MINI-PROJECT/server/src/controllers/event-controller.tsx:98:38
+
+  95   Next: NextFunction
+  96 ) {
+  97   try {
+→ 98     const posts = await prisma.event.findMany(
+The table `public.event` does not exist in the current database.
+2025-02-08T06:50:55.694Z - Missing required fields!
+2025-02-08T07:21:20.667Z - Missing required fields!
+2025-02-08T07:22:45.716Z - Missing required fields!
+2025-02-08T07:23:29.870Z - Missing required fields!
+2025-02-08T07:46:17.364Z - Missing required fields!
+2025-02-08T07:49:23.621Z - Missing required fields!
+2025-02-08T07:49:28.516Z - Missing required fields!
+2025-02-08T07:52:22.707Z - Missing required fields!
+2025-02-08T07:55:33.785Z - Missing required fields!
+2025-02-08T07:59:59.104Z - Missing required fields!
+2025-02-08T08:00:38.343Z - Missing required fields!
+2025-02-08T08:01:45.766Z - Missing required fields!
+2025-02-08T08:04:33.938Z - Missing required fields!
+2025-02-08T08:53:29.696Z - Missing required fields!
+2025-02-08T08:55:36.154Z - Missing required fields!
+2025-02-08T08:55:52.597Z - Missing required fields!
+2025-02-08T09:10:50.379Z - Missing required fields!
+2025-02-08T09:14:45.832Z - Missing required fields!
+2025-02-08T09:14:52.402Z - Missing required fields!
+2025-02-08T09:15:26.688Z - Missing required fields!
+2025-02-08T09:17:26.319Z - Missing required fields!
+2025-02-08T13:01:55.216Z - Missing required fields!
+2025-02-08T13:02:43.586Z - Missing required fields!
+2025-02-08T13:03:02.024Z - Missing required fields!
+2025-02-08T13:21:52.478Z - Missing required fields!
+2025-02-08T13:48:22.891Z - Missing required fields!
+2025-02-08T13:56:40.811Z - Missing required fields!

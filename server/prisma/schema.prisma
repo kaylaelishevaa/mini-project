@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_LOCAL")
+}
+
+enum Role {
+  READER
+  AUTHOR
+  ADMIN
+}
+
+model event {
+  id            Int      @id @default(autoincrement())
+  title         String
+  excerpt       String
+  content       String
+  image         String
+  location      String
+  slug          String
+  published     Boolean  @default(false)
+  publishedDate DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  CategoryEvent CategoryEvent[]
+}
+
+model Category {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  CategoryEvent CategoryEvent[]
+}
+
+model CategoryEvent {
+  id         Int @id @default(autoincrement())
+  eventId    Int
+  categoryId Int
+
+  Event    event    @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  Category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model User {
+  id             Int            @id @default(autoincrement())
+  name           String
+  username       String         @unique
+  password       String
+  email          String         @unique
+  emailConfirmed Boolean        @default(false)
+  role           Role           @default(READER)
+  createdAt      DateTime       @default(now())
+  updateAt       DateTime       @updatedAt
+  ConfirmToken   ConfirmToken[]
+}
+
+model ConfirmToken {
+  id          Int      @id @default(autoincrement())
+  token       String
+  expiredDate DateTime
+  used        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  userId      Int
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
