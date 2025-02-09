@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMERS
+  ORGANIZERS
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  name           String
+  username       String   @unique
+  password       String
+  email          String   @unique
+  emailConfirmed Boolean  @default(false)
+  role           Role     @default(CUSTOMERS)
+  referralNumber String   @unique
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  Referral Referral[]
+  Point    Point[]
+  Coupon   Coupon[]
+
+  confirmToken confirmToken[]
+}
+
+model Referral {
+  id             Int      @id @default(autoincrement())
+  referredById   Int
+  referredUserId Int
+  createdAt      DateTime @default(now())
+
+  referredBy User @relation(fields: [referredById], references: [id], onDelete: Cascade)
+}
+
+model Point {
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  pointsEarned Int      @default(10000)
+  expiresAt    DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Coupon {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  discount  Int      @default(10)
+  expiresAt DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model confirmToken {
+  id Int @id @default(autoincrement())
+  userId Int
+  token String 
+  expiredDate DateTime
+  used Boolean @default(false)
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+//User - Referral = one to many
+//User - Points = one to many 
+//User - Coupon = one to many
